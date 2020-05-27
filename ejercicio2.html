@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+<body>
+    <div id="aplicacion" class="miaplicacion">
+        <h1>{{mensaje }}</h1>
+        <input v-model="mensaje" type="text" /> <!-- Enlace de doble dirección entre input y h1 -->
+    </div>
+    <script type="text/javascript">
+        new Vue(
+        {
+            el:".miaplicacion",
+            data:
+            {
+                mensaje:"Hola Mundo"
+            }
+        })
+    </script>
+</body>
+</html>
