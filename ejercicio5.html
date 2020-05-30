@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento v-on:click</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>       
+    <script src="script.js"></script> 
+</head>
+<body>
+    <div id="aplicacion">
+        <h1 v-if="(oportunidades == 3)">Ya realizaste 3 tiros</h1>
+        <h1 v-else>Tiros: {{oportunidades}}</h1>
+        <h2>Jugador 1: {{ jugador1 }}</h2>
+        <h2>Jugador 2: {{ jugador2 }}</h2>
+        <h1>{{ganador}}</h1>
+        <input type="button" v-on:click="jugar":disabled="oportunidades==3" value="Jugar">
+        <input type="button" v-if="(oportunidades==3)" v-on:click="reiniciar" value="Reiniciar">
+    </div>
+    
+</body>
+</html>

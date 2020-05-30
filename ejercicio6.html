@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+<body>
+    <div id="aplicacion">
+        <ul>
+            <li v-for="n in 10">
+                Número:{{11-n}}
+            </li>
+        </ul>
+        <h1>{{ salida }}</h1>
+        <ul>
+            <li v-for="item in items" v-on:click="mostrarValor">
+                <button>{{item}}</button>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        new Vue(
+        {
+            el:"#aplicacion",
+            data:
+            {
+                items:["Naruto","Dragon Ball","Pokemón"],
+                salida:""
+            },
+            methods: 
+            {          
+                mostrarValor: function(event)
+                {
+                    if(event)
+                    {
+                        this.salida = event.target.innerText;
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>
