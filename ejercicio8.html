@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades calculadas</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+<body>
+    <div id="aplicacion">
+        a={{ a }}, b={{ b }}
+    </div>
+    <script type="text/javascript">
+        new Vue(
+        {
+            el:"#aplicacion",
+            data: {
+             a: 1
+            },
+            computed: {
+                // Cuando a cambia, automáticamente b cambia, sin ser invocada
+                b: function () {                    
+                    return this.a + 1
+                }
+            }
+        })
+    </script>
+</body>
+</html>

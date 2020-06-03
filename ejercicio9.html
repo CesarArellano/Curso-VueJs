@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades calculadas</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+<body>
+    <div id="aplicacion">
+        URL Youtube:
+        <br>
+        <input type="text" size="50" v-model="linkVideo">
+        <select v-model="tamanio">
+            <option value="maxresdefault">Maximum Resolution</option>
+            <option value="sddefault">Standard Definition</option>
+            <option value="hqdefault">High Quality</option>
+        </select>
+        <br>
+        Link Video: {{linkVideo}}
+        <br>
+        Resolution IMG: {{tamanio}}
+        <br>
+        IMG Preview:
+        <br>
+        <img v-bind:src="img"/>
+    </div>
+    <script type="text/javascript">
+        new Vue(
+        {
+            el:"#aplicacion",
+            data: 
+            {
+                linkVideo: "http://www.youtube.com/watch?v=1oMThuGDZwg",
+                tamanio: "maxresdefault"
+            },
+            computed:
+            {
+                // Cuando linkVideo cambia, automáticamente source de img cambia (sin ser invocada img)
+                img: function()
+                {
+                    var ID=(this.linkVideo).split("v=")[1].substring(0,11);
+                    return "http://img.youtube.com/vi/"+ ID +"/"+ this.tamanio +".jpg";
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

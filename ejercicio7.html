@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for con objetos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+<body>
+    <div id="aplicacion">
+        <ul>
+            <li v-for="canal in canalesYoutube">
+                El canal <strong>{{canal.nombre }}</strong>
+                está dirigido por: <strong>"{{canal.edutuber}}"</strong>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        new Vue(
+        {
+            el:"#aplicacion",
+            data:
+            {
+                canalesYoutube:[
+                {nombre:"Develoteca",edutuber:"Oscar"},
+                {nombre:"hdeleon",edutuber:"Héctor"},
+                {nombre:"Manuel Zapata",edutuber:"Manuel"},
+                {nombre:"DominiCode",edutuber:"Bezael"},
+                {nombre:"Coderos",edutuber:"Christopher"},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
