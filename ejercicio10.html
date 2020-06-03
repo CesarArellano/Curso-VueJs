@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio - Componentes</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+</head>
+<body>
+    <div id="aplicacion">
+       <contador> </contador> <!-- Esto es un componente -->
+       <contador> </contador>
+       <contador> </contador> <!-- Cada uno es independiente -->
+    </div>
+    <script type="text/javascript">
+        Vue.component('contador',
+        {
+            data:function()
+            {
+                return {count:0}
+            },
+            template: '<button v-on:click="count++">Click {{ count }} veces</button>'
+
+        })
+        new Vue(
+        {
+            el:"#aplicacion"
+        })
+    </script>
+</body>
+</html>
