@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio - Componentes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    
+</head>
+<body>
+    <div id="aplicacion">
+       <contador nombre-clase="btn btn-info"> </contador> <!-- Esto es un componente -->
+       <contador nombre-clase="btn btn-danger"> </contador>
+       <contador nombre-clase="btn btn-success"> </contador> <!-- Cada uno es independiente -->
+       <mensaje></mensaje> <!-- Este componente sólo funciona en el div 'aplicacion1', ya que es local-->
+    </div>
+    <div id="aplicacion1">
+        <contador nombre-clase="btn btn-success"> </contador>
+        <mensaje></mensaje>
+    </div>
+    <script type="text/javascript">
+        Vue.component('contador', // componente de tipo global
+        {
+            data:function()
+            {
+                return {count:0}
+            },
+            template: '<button v-bind:class="nombreClase" v-on:click="count++">Click {{ count }} veces</button>',
+            props: {
+                nombreClase:String // En camelCase y en el componente como kebab-case
+            }
+
+        })
+        var componenteMensaje = { // componente de tipo local
+            template: '<div class="alert alert-primary">Texto de mensaje</div>'
+        }
+        new Vue(
+        {
+            el:"#aplicacion"
+        })
+        new Vue(
+        {
+            el:"#aplicacion1",
+            components:
+            {
+                'mensaje': componenteMensaje // componente utilizado solo para el segundo div.
+            }
+        })
+    </script>
+</body>
+</html>
