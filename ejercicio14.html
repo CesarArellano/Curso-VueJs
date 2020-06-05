@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio - Filtros</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    
+</head>
+<body>
+    <div id="aplicacion">
+        <input v-model="nombre" type="text" placeholder="Ingrese su nombre"/>
+        <h1>Mayúscula: {{ nombre | Mayuscula }}</h1>
+        <h1>Cantidad de letras: {{ nombre | contador }}</h1>
+    </div>
+    <script type="text/javascript">
+        Vue.filter('Mayuscula', function(valor)
+        {
+            return valor.toUpperCase(); //Convierte el texto de la cadena del input text a mayúsculas.
+        }) // filtro global
+        new Vue(
+        {
+            el:"#aplicacion",
+            data:
+            {
+                nombre:''
+            },
+            filters: //filtros locales
+            {
+                contador:function(valor)
+                {
+                    return valor.length; //Obtiene el tamaño de la cadena del input text
+                }
+            }
+        })
+    </script>
+</body>
+</html>
